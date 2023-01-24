@@ -20,9 +20,9 @@ import copy
 
 base_dir = Path(scripts.basedir())
 
-def get_vae_options() -> List[str]:
-    vae_options = list(sd_vae.vae_dict.keys())
-    return vae_options
+#def get_vae_options() -> List[str]:
+#    vae_options = list(sd_vae.vae_dict.keys())
+#    return vae_options
 
 def apply_checkpoint(x):
     info = modules.sd_models.get_closet_checkpoint_match(x)
