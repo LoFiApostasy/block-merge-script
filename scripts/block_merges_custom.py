@@ -20,10 +20,6 @@ import copy
 
 base_dir = Path(scripts.basedir())
 
-def get_vae_options() -> List[str]:
-    vae_options = list(sd_vae.vae_dict.keys())
-    return vae_options
-
 def apply_checkpoint(x):
     info = modules.sd_models.get_closet_checkpoint_match(x)
     if info is None:
@@ -148,6 +144,10 @@ class Script(scripts.Script):
     def show(self, is_img2img):
         return True
 
+    def get_vae_options():
+        vae_options = list(sd_vae.vae_dict.keys())
+        return vae_options
+    
     def ui(self, is_img2img):
         
         vae_file = gr.inputs.Select(get_vae_options(), label='Select VAE', default='none')
