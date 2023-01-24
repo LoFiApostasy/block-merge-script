@@ -35,7 +35,7 @@ def dprint(str, flg):
     if flg:
         print(str)
 
-def merge(weights:list, model_0, model_1, device="cpu", base_alpha=0.5, verbose=False, vae_file=SDv1.5-vae-ft-mse):
+def merge(weights:list, model_0, model_1, device="cpu", base_alpha=0.5, verbose=False):
     if weights is None:
         weights = None
     else:
