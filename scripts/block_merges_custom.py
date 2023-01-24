@@ -152,7 +152,7 @@ class Script(scripts.Script):
     def ui(self, is_img2img):
         
         options = list(sd_vae.vae_dict.keys())
-        vae_file = gr.select_box(options=options, default=None, label="Bake in VAE:")
+        vae_file = gr.inputs.Select(options, label='VAE File', default=options[0])
         gpu_merge = gr.Checkbox(label="Merge using GPU", value=True, elem_id="gpu-merge")
         verbose = gr.Checkbox(label="Verbose", value=False, elem_id="verbose-merge")
         finishreload = gr.Checkbox(label="Reload checkpoint when finished", value=False, elem_id="reload-merge")
