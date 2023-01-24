@@ -20,6 +20,10 @@ import copy
 
 base_dir = Path(scripts.basedir())
 
+def get_vae_options() -> List[str]:
+    vae_options = list(sd_vae.vae_dict.keys())
+    return vae_options
+
 def apply_checkpoint(x):
     info = modules.sd_models.get_closet_checkpoint_match(x)
     if info is None:
@@ -146,7 +150,7 @@ class Script(scripts.Script):
 
     def ui(self, is_img2img):
         
-        bake_in_vae = gr.selectbox(get_vae_options(), label='Select VAE', default='none')
+        vae_file = gr.selectbox(get_vae_options(), label='Select VAE', default='none')
         gpu_merge = gr.Checkbox(label="Merge using GPU", value=True, elem_id="gpu-merge")
         verbose = gr.Checkbox(label="Verbose", value=False, elem_id="verbose-merge")
         finishreload = gr.Checkbox(label="Reload checkpoint when finished", value=False, elem_id="reload-merge")
