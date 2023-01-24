@@ -7,7 +7,7 @@ import math
 import random
 import gradio as gr
 import modules.scripts as scripts
-from gradio import interface
+from gradio import interface as gr
 from tqdm import tqdm
 from modules import sd_models
 from string import Template
@@ -151,7 +151,7 @@ class Script(scripts.Script):
     
     def ui(self, is_img2img):
         
-        vae_file = gr.select_box(get_vae_options(), label='Select VAE', default='none')
+        vae_file = gr.inputs.Select(options=get_vae_options(), default=None, label="Bake in VAE:")
         gpu_merge = gr.Checkbox(label="Merge using GPU", value=True, elem_id="gpu-merge")
         verbose = gr.Checkbox(label="Verbose", value=False, elem_id="verbose-merge")
         finishreload = gr.Checkbox(label="Reload checkpoint when finished", value=False, elem_id="reload-merge")
