@@ -7,7 +7,7 @@ import math
 import random
 import gradio as gr
 import modules.scripts as scripts
-from gradio import interface as gr
+from gradio import interface
 from tqdm import tqdm
 from modules import sd_models
 from string import Template
