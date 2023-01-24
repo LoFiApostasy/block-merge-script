@@ -1,6 +1,7 @@
 import os
 import argparse
 import re
+import shutil
 import torch
 import math
 import random
@@ -13,7 +14,8 @@ from pathlib import Path
 from modules.processing import process_images, fix_seed, Processed
 from modules.shared import opts
 import modules.sd_models
-from modules import shared, sd_vae
+from modules import shared, sd_vae, images, sd_models
+from modules.ui_common import plaintext_to_html
 import copy
 
 base_dir = Path(scripts.basedir())
@@ -33,7 +35,7 @@ def dprint(str, flg):
     if flg:
         print(str)
 
-def merge(weights:list, model_0, model_1, device="cpu", base_alpha=0.5, verbose=False):
+def merge(weights:list, model_0, model_1, device="cpu", base_alpha=0.5, verbose=False, vae_file=SDv1.5-vae-ft-mse.ckpt):
     if weights is None:
         weights = None
     else:
@@ -127,7 +129,7 @@ def merge(weights:list, model_0, model_1, device="cpu", base_alpha=0.5, verbose=
 
     print("Restoring vae...")
 
-    vae_file = sd_vae.get_vae_from_settings()
+    vae_file = sd_vae.vae_dict.get(vae_file, None)
     sd_vae.load_vae(shared.sd_model, vae_file)
 
     print("Merge complete")
@@ -135,6 +137,7 @@ def merge(weights:list, model_0, model_1, device="cpu", base_alpha=0.5, verbose=
 
 
 class Script(scripts.Script):
+    
     def title(self):
         return "Block Model Merge Custom"
 
@@ -142,6 +145,8 @@ class Script(scripts.Script):
         return True
 
     def ui(self, is_img2img):
+        
+        bake_in_vae = gr.selectbox(get_vae_options(), label='Select VAE', default='none')
         gpu_merge = gr.Checkbox(label="Merge using GPU", value=True, elem_id="gpu-merge")
         verbose = gr.Checkbox(label="Verbose", value=False, elem_id="verbose-merge")
         finishreload = gr.Checkbox(label="Reload checkpoint when finished", value=False, elem_id="reload-merge")
