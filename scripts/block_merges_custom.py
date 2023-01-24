@@ -20,9 +20,9 @@ import copy
 
 base_dir = Path(scripts.basedir())
 
-#def get_vae_options() -> List[str]:
-#    vae_options = list(sd_vae.vae_dict.keys())
-#    return vae_options
+def get_vae_options() -> List[str]:
+    vae_options = list(sd_vae.vae_dict.keys())
+    return vae_options
 
 def apply_checkpoint(x):
     info = modules.sd_models.get_closet_checkpoint_match(x)
@@ -150,15 +150,15 @@ class Script(scripts.Script):
 
     def ui(self, is_img2img):
         
-        vae_file = gr.selectbox(get_vae_options(), label='Select VAE', default='none')
+        vae_file = gr.inputs.Select(get_vae_options(), label='Select VAE', default='none')
         gpu_merge = gr.Checkbox(label="Merge using GPU", value=True, elem_id="gpu-merge")
         verbose = gr.Checkbox(label="Verbose", value=False, elem_id="verbose-merge")
         finishreload = gr.Checkbox(label="Reload checkpoint when finished", value=False, elem_id="reload-merge")
         weights = gr.Textbox(label="Weights", lines=5, max_lines=2000, elem_id="merge-weights")
 
-        return [gpu_merge, verbose, finishreload, weights]
+        return [vae_file, gpu_merge, verbose, finishreload, weights]
 
-    def run(self, p, gpu_merge, verbose, finishreload, weights):
+    def run(self, p, vae_file, gpu_merge, verbose, finishreload, weights):
         print("Running block model merge")
         output_images = []
         infotexts = []
