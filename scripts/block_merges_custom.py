@@ -16,12 +16,11 @@ import modules.sd_models
 from modules import shared, sd_vae, images, sd_models #new code, last 2
 import copy
 
-# new code
+#new code
 import shutil
-import tqdm
 from modules.ui_common import plaintext_to_html
 import safetensors.torch
-# end new code
+#end new code
 
 base_dir = Path(scripts.basedir())
 
@@ -225,7 +224,7 @@ class Script(scripts.Script):
 
         return res
 
-    #adding code    
+#new code    
     bake_in_vae_filename = sd_vae.vae_dict.get(bake_in_vae, None)
     if bake_in_vae_filename is not None:
         print(f"Baking in VAE from {bake_in_vae_filename}")
