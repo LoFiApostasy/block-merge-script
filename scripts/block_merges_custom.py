@@ -25,10 +25,6 @@ import copy
 import glob
 from copy import deepcopy
 
-vae_path = os.path.abspath(os.path.join(models_path, "VAE"))
-vae_ignore_keys = {"model_ema.decay", "model_ema.num_updates"}
-vae_dict = {}
-
 base_vae = None
 loaded_vae_file = None
 checkpoint_info = None
@@ -363,8 +359,11 @@ class Script(scripts.Script):
     
     def ui(self, is_img2img):
         
-        options = list(sd_vae.vae_dict.keys())
-        vae_file = gr.inputs.Select(options, label='VAE File', default=options[0])
+#        options = list(sd_vae.vae_dict.keys())
+#        vae_file = gr.inputs.Select(options, label='VAE File', default=options[0])
+        vae_path = os.path.abspath(os.path.join(models_path, "VAE"))
+        vae_ignore_keys = {"model_ema.decay", "model_ema.num_updates"}
+        vae_dict = {}
         gpu_merge = gr.Checkbox(label="Merge using GPU", value=True, elem_id="gpu-merge")
         verbose = gr.Checkbox(label="Verbose", value=False, elem_id="verbose-merge")
         finishreload = gr.Checkbox(label="Reload checkpoint when finished", value=False, elem_id="reload-merge")
