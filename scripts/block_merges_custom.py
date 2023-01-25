@@ -171,8 +171,8 @@ def merge(weights:list, model_0, model_1, device="cpu", base_alpha=0.5, verbose=
 #    sd_vae.load_vae(shared.sd_model, vae_file)
 #new code
     vae_file = sd_vae.get_vae_from_settings()
-        if not vae_file:
-            vae_file = dropdown
+    if not vae_file:
+        vae_file = dropdown
     sd_vae.load_vae(shared.sd_model, vae_file)
 #end new code    
 
