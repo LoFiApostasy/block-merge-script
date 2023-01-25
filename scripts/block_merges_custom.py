@@ -196,7 +196,22 @@ class Script(scripts.Script):
         weights = gr.Textbox(label="Weights", lines=5, max_lines=2000, elem_id="merge-weights")
 
         return [gpu_merge, verbose, finishreload, weights]#, dropdown]
+    
+    #new code
+    bake_in_vae_filename = sd_vae.vae_dict.get(bake_in_vae, None)
+    if bake_in_vae_filename is not None:
+        print(f"Baking in VAE from {bake_in_vae_filename}")
+        shared.state.textinfo = 'Baking in VAE'
+        vae_dict = sd_vae.load_vae_dict(bake_in_vae_filename, map_location='cpu')
+    #end new code
+        
+        for key in vae_dict.keys():
+            theta_0_key = 'first_stage_model.' + key
+            if theta_0_key in theta_0:
+                theta_0[theta_0_key] = to_half(vae_dict[key], save_as_half)
 
+        del vae_dict
+    
     def run(self, p, gpu_merge, verbose, finishreload, weights):
         print("Running block model merge")
         output_images = []
