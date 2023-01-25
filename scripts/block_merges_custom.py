@@ -184,8 +184,7 @@ class Script(scripts.Script):
     def ui(self, is_img2img):
         #new code
         dropdown_list = [gr.Dropdown.update(choices=sd_models.checkpoint_tiles()) for _ in range(4)]
-            output_modelname = "Checkpoint saved to " + output_modelname
-            return dropdown_list, output_modelname #end new code
+        return dropdown_list, output_modelname #end new code
         gpu_merge = gr.Checkbox(label="Merge using GPU", value=True, elem_id="gpu-merge")
         verbose = gr.Checkbox(label="Verbose", value=False, elem_id="verbose-merge")
         finishreload = gr.Checkbox(label="Reload checkpoint when finished", value=False, elem_id="reload-merge")
