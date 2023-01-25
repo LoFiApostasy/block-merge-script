@@ -167,8 +167,14 @@ def merge(weights:list, model_0, model_1, device="cpu", base_alpha=0.5, verbose=
 
     print("Restoring vae...")
 
+#    vae_file = sd_vae.get_vae_from_settings()
+#    sd_vae.load_vae(shared.sd_model, vae_file)
+#new code
     vae_file = sd_vae.get_vae_from_settings()
+        if not vae_file:
+            vae_file = dropdown
     sd_vae.load_vae(shared.sd_model, vae_file)
+#end new code    
 
     print("Merge complete")
     return True
@@ -181,23 +187,16 @@ class Script(scripts.Script):
     def show(self, is_img2img):
         return True
 
-    #def ui(self, is_img2img):
-        #
-        #gpu_merge = gr.Checkbox(label="Merge using GPU", value=True, elem_id="gpu-merge")
-        #verbose = gr.Checkbox(label="Verbose", value=False, elem_id="verbose-merge")
-        #finishreload = gr.Checkbox(label="Reload checkpoint when finished", value=False, elem_id="reload-merge")
-        #weights = gr.Textbox(label="Weights", lines=5, max_lines=2000, elem_id="merge-weights")
-        
-        #return [gpu_merge, verbose, finishreload, weights]
-    
     def ui(self, is_img2img):
         gpu_merge = gr.Checkbox(label="Merge using GPU", value=True, elem_id="gpu-merge")
         verbose = gr.Checkbox(label="Verbose", value=False, elem_id="verbose-merge")
         finishreload = gr.Checkbox(label="Reload checkpoint when finished", value=False, elem_id="reload-merge")
+        #new code
+        dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_models.checkpoint_tiles())
+        #end new code
         weights = gr.Textbox(label="Weights", lines=5, max_lines=2000, elem_id="merge-weights")
-        dropdown = gr.Dropdown(label="Select Checkpoint", choices=sd_models.checkpoint_tiles())
-        return [gpu_merge, verbose, finishreload, weights, dropdown]
 
+        return [gpu_merge, verbose, finishreload, weights, dropdown]
 
     def run(self, p, gpu_merge, verbose, finishreload, weights):
         print("Running block model merge")
