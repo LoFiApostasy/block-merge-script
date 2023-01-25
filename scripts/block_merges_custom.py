@@ -196,7 +196,7 @@ class Script(scripts.Script):
         #end new code
         weights = gr.Textbox(label="Weights", lines=5, max_lines=2000, elem_id="merge-weights")
 
-        return [gpu_merge, verbose, finishreload, weights, dropdown]
+        return [gpu_merge, verbose, finishreload, weights]#, dropdown]
 
     def run(self, p, gpu_merge, verbose, finishreload, weights):
         print("Running block model merge")
