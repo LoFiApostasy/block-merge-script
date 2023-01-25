@@ -170,9 +170,7 @@ def merge(weights:list, model_0, model_1, device="cpu", base_alpha=0.5, verbose=
 #    vae_file = sd_vae.get_vae_from_settings()
 #    sd_vae.load_vae(shared.sd_model, vae_file)
 #new code
-    vae_file = sd_vae.get_vae_from_settings()
-    if not vae_file:
-        vae_file = dropdown
+    vae_file = dropdown
     sd_vae.load_vae(shared.sd_model, vae_file)
 #end new code    
 
@@ -192,7 +190,8 @@ class Script(scripts.Script):
         verbose = gr.Checkbox(label="Verbose", value=False, elem_id="verbose-merge")
         finishreload = gr.Checkbox(label="Reload checkpoint when finished", value=False, elem_id="reload-merge")
         #new code
-        dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_models.checkpoint_tiles())
+        dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_vae.vae_dict())
+        #dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_models.checkpoint_tiles())
         #end new code
         weights = gr.Textbox(label="Weights", lines=5, max_lines=2000, elem_id="merge-weights")
 
