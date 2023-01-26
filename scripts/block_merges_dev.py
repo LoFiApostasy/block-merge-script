@@ -198,7 +198,7 @@ class Script(scripts.Script):
         return [gpu_merge, verbose, finishreload, weights]#, dropdown]
     
     #new code
-    bake_in_vae_filename = sd_vae.vae_dict.get(bake_in_vae, None)
+    bake_in_vae_filename = sd_vae.vae_dict.get(None)
     if bake_in_vae_filename is not None:
         print(f"Baking in VAE from {bake_in_vae_filename}")
         shared.state.textinfo = 'Baking in VAE'
