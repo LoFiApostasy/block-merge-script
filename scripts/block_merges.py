@@ -127,8 +127,8 @@ def merge(weights:list, model_0, model_1, device="cpu", base_alpha=0.5, verbose=
 
     print("Restoring vae...")
 
-    vae_file = sd_vae.get_vae_from_settings()
-    sd_vae.load_vae(shared.sd_model, vae_file)
+#    vae_file = sd_vae.get_vae_from_settings()
+#    sd_vae.load_vae(shared.sd_model, vae_file)
 
     print("Merge complete")
     return True
