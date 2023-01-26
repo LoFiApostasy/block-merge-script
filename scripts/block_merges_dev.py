@@ -188,7 +188,7 @@ class Script(scripts.Script):
         verbose = gr.Checkbox(label="Verbose", value=False, elem_id="verbose-merge")
         finishreload = gr.Checkbox(label="Reload checkpoint when finished", value=False, elem_id="reload-merge")
         #new code
-        dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_vae.vae_dict()
+        dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_vae.vae_dict())
         #dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_models.checkpoint_tiles())
         #end new code
         weights = gr.Textbox(label="Weights", lines=5, max_lines=2000, elem_id="merge-weights")
@@ -250,54 +250,4 @@ class Script(scripts.Script):
         return res
 
 #new code    
-        bake_in_vae_filename = sd_vae.vae_dict.get(bake_in_vae, None)
-        if bake_in_vae_filename is not None:
-            print(f"Baking in VAE from {bake_in_vae_filename}")
-            shared.state.textinfo = 'Baking in VAE'
-            vae_dict = sd_vae.load_vae_dict(bake_in_vae_filename, map_location='cpu')
 
-            for key in vae_dict.keys():
-                theta_0_key = 'first_stage_model.' + key
-                if theta_0_key in theta_0:
-                    theta_0[theta_0_key] = to_half(vae_dict[key], save_as_half)
-
-            del vae_dict
-
-    #    if save_as_half and not theta_func2:
-    #        for key in theta_0.keys():
-    #            theta_0[key] = to_half(theta_0[key], save_as_half)
-
-        if discard_weights:
-            regex = re.compile(discard_weights)
-            for key in list(theta_0):
-                if re.search(regex, key):
-                    theta_0.pop(key, None)
-
-        ckpt_dir = shared.cmd_opts.ckpt_dir or sd_models.model_path
-
-        filename = filename_generator() if custom_name == '' else custom_name
-        filename += ".inpainting" if result_is_inpainting_model else ""
-        filename += "." + checkpoint_format
-
-        output_modelname = os.path.join(ckpt_dir, filename)
-
-        shared.state.nextjob()
-        shared.state.textinfo = "Saving"
-        print(f"Saving to {output_modelname}...")
-
-        _, extension = os.path.splitext(output_modelname)
-        if extension.lower() == ".safetensors":
-            safetensors.torch.save_file(theta_0, output_modelname, metadata={"format": "pt"})
-        else:
-            torch.save(theta_0, output_modelname)
-
-        sd_models.list_models()
-
-        create_config(output_modelname, config_source, primary_model_info, secondary_model_info, tertiary_model_info)
-
-        print(f"Checkpoint saved to {output_modelname}.")
-        shared.state.textinfo = "Checkpoint saved"
-        shared.state.end()
-
-        return [*[gr.Dropdown.update(choices=sd_models.checkpoint_tiles()) for _ in range(4)], "Checkpoint saved to " + output_modelname]
-#end new code
