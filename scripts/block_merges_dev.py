@@ -1,7 +1,5 @@
 
 
-
-
 import os
 import argparse
 import re
@@ -180,7 +178,7 @@ def merge(weights:list, model_0, model_1, device="cpu", base_alpha=0.5, verbose=
 
 class Script(scripts.Script):
     def title(self):
-        return "Block Model Merge Custom"
+        return "Block Model Merge Development"
 
     def show(self, is_img2img):
         return True
@@ -190,7 +188,7 @@ class Script(scripts.Script):
         verbose = gr.Checkbox(label="Verbose", value=False, elem_id="verbose-merge")
         finishreload = gr.Checkbox(label="Reload checkpoint when finished", value=False, elem_id="reload-merge")
         #new code
-        dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_vae.vae_dict())
+        dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_vae.vae_dict()
         #dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_models.checkpoint_tiles())
         #end new code
         weights = gr.Textbox(label="Weights", lines=5, max_lines=2000, elem_id="merge-weights")
