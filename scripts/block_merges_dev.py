@@ -189,7 +189,7 @@ class Script(scripts.Script):
         verbose = gr.Checkbox(label="Verbose", value=False, elem_id="verbose-merge")
         finishreload = gr.Checkbox(label="Reload checkpoint when finished", value=False, elem_id="reload-merge")
         #new code
-        dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_vae.vae_dict.get(bake_in_vae, None))
+        dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_vae.vae_dict.get(None))
         #dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_vae.vae_dict())
         #dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_models.checkpoint_tiles())
         #end new code
