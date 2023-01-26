@@ -1,5 +1,6 @@
 
-
+import sys
+sys.path.append('\\modules')
 import os
 import argparse
 import re
