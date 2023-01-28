@@ -135,7 +135,7 @@ def merge(weights:list, model_0, model_1, device="cpu", base_alpha=0.5, verbose=
 
 class Script(scripts.Script):
     def title(self):
-        return "Block Model Merge"
+        return "Block Model Merge Dev"
 
     def show(self, is_img2img):
         return True
