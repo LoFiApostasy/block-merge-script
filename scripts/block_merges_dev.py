@@ -139,7 +139,20 @@ class Script(scripts.Script):
 
     def show(self, is_img2img):
         return True
-      
+    
+    def fill_weights_textbox(self):
+        compare_value = self.compare.value
+        new_weights = calculate_weights(compare_value)
+        self.weights.value = new_weights
+
+    def calculate_weights(compare_value):
+        values = compare_value.split(',')
+        new_weights = []
+        for i in range(25):
+            line = values[:3] + [0]*i + [1] + [0]*(24-i)
+            new_weights.append(','.join(line))
+        return '\n'.join(new_weights)
+    
     def ui(self, is_img2img):
         self.compare = gr.Textbox(label="Compare Current Mix", lines=1, elem_id="compare-weights")
         submit_button = gr.Button(label="Submit", on_submit=self.fill_weights_textbox)
@@ -157,19 +170,6 @@ class Script(scripts.Script):
         self.weights = gr.Textbox(label="Weights", lines=5, max_lines=2000, elem_id="merge-weights")
 
         return [self.gpu_merge, self.verbose, self.finishreload, self.weights, submit_button]
-
-    def fill_weights_textbox(self):
-        compare_value = self.compare.value
-        new_weights = calculate_weights(compare_value)
-        self.weights.value = new_weights
-
-    def calculate_weights(compare_value):
-        values = compare_value.split(',')
-        new_weights = []
-        for i in range(25):
-            line = values[:3] + [0]*i + [1] + [0]*(24-i)
-            new_weights.append(','.join(line))
-        return '\n'.join(new_weights)
 
   
     def run(self, p, gpu_merge, verbose, finishreload, weights):
