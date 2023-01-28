@@ -190,8 +190,6 @@ class Script(scripts.Script):
         finishreload = gr.Checkbox(label="Reload checkpoint when finished", value=False, elem_id="reload-merge")
         #new code
         dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_vae.vae_dict.get(None))
-        #dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_vae.vae_dict())
-        #dropdown = gr.Dropdown(label="Select VAE Checkpoint", choices=sd_models.checkpoint_tiles())
         #end new code
         weights = gr.Textbox(label="Weights", lines=5, max_lines=2000, elem_id="merge-weights")
 
