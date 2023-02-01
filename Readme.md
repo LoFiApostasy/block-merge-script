@@ -20,3 +20,105 @@
 - Go to `Extensions` tab on your web UI
 - `Install from URL` with this repo URL
 - Install
+
+
+########### Examples ###########
+
+Here is a quick script input to get an idea of whats going on in Model2
+
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+Model1.ckpt,Model2.safetensors,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+
+
+
+Here is another script 2 batch process.
+Model1 and Model2 mixed at 50%. 
+First batch is to strengthen the concept your pulling from model2, note that I added a divider run with .9,.2 so its easy to find the last picture of the batch.
+After several batches I will open my block merge with all sliders set to 50% and incriment the sliders by 1 that represent a positive improvement, and 2 forna huge improvement. After several batche runs it becomes clear which ones are the sliders that contain the concepts.
+keep in mind when doing this that the picture order is:
+(no change),IN00 - IN11, MID00, OUT11 - OUT00
+
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,1
+Model1.ckpt,Model2.safetensors,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2
+
+
+After setting the sliders to the new stronger concept, then run the reverse, subtracting model2 and noting reduced deformities.
+### Note, this part is an example because you would have set your sliders to your improved concept.  ###
+### This is here to demonstrate the pattern. ###
+
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0,.5
+Model1.ckpt,Model2.safetensors,1,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,.5,0
+Model1.ckpt,Model2.safetensors,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2,.9,.2
