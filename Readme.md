@@ -1,3 +1,5 @@
+Small update to fix vae selection breaking the script.
+
 # Merge Block Weighted - Script
 
 - This is an extension for [AUTOMATIC1111's Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
@@ -21,6 +23,7 @@
 - `Install from URL` with this repo URL
 - Install
 
+A wonderful writeup on Blockmerge exists here: https://rentry.org/BlockMergeExplained
 
 ########### Examples ###########
 
