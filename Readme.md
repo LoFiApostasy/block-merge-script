@@ -23,6 +23,8 @@ Small update to fix vae selection breaking the script.
 - `Install from URL` with this repo URL
 - Install
 
+####################################################################################
+
 A wonderful writeup on Blockmerge exists here: https://rentry.org/BlockMergeExplained
 
 ########### Examples ###########
